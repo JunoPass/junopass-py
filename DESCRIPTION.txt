@@ -1,1 +1,1 @@
-xxx
+Implementation of [JunoPass Authentication](https://developers.junopass.com/junopass-api/authenticating-users) API in Python.Implementation of https://developers.junopass.com/junopass-api/authenticating-users API in Python.
