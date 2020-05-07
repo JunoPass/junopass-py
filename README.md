@@ -15,14 +15,17 @@ Implementation of [JunoPass Authentication](https://developers.junopass.com/juno
 **Note the private_key must never be shared.**
 
     from junopass import JunoPass
+    
     jp = JunoPass(<Access-Token>, <JunoPass-Public-Key>)
     private_key, public_key = jp.setup_device()
 
 ## Authenticating user - step 1
 
 Submit authentication details to JunoPass. Verify signed challenge hash for authenticity.
+
     method = "EMAIL"
     identifier = "testuser@example.com"
+
     valid_challenge = self.jp.authenticate(method, identifier, pubkey)
 
 ## Verify account using challenge and OTP token - step 2
