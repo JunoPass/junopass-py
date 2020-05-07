@@ -1,4 +1,4 @@
-from junopass.signatures import *
+from junopass import signatures
 from junopass.client import *
 
 
@@ -17,10 +17,11 @@ class JunoPass(object):
         Returns a tupple of key pair (private_key, public_key).
 
         Example:
-        jp = junopass.JunoPass(<Access-Token>, <JunoPass-Public-Key>)
+        from junopass import JunoPass
+        jp = JunoPass(<Access-Token>, <JunoPass-Public-Key>)
         private_key, public_key = jp.setup_device()
         """
-        return _generate_device_keys()
+        return signatures._generate_device_keys()
 
     def authenticate(self, payload):
         pass
