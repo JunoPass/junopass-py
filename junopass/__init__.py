@@ -77,9 +77,9 @@ class JunoPass(object):
             otp integer - User received OTP token
 
         Example:
-        prvtkey, pubkey = self.jp.setup_device()
+            prvtkey, pubkey = self.jp.setup_device()
 
-        # Step 1
+            # Step 1
             method = "EMAIL"
             identifier = "felix.cheruiyot@kenyaapps.net"
             valid_challenge, device_id = self.jp.authenticate(
