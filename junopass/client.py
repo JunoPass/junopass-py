@@ -14,7 +14,7 @@ def _authenticate_request(access_token, payload):
         raise Exception("Access token is required")
     headers = {"Authorization": f"Token {access_token}"}
     api_url = f"{JUNOPASS_API_BASE}user/authenticate/"
-    resp = requests.post(api_url, json=payload, headers=headers)
+    resp = requests.post(api_url, json=payload, headers=headers, timeout=10)
     return resp
 
 
@@ -26,5 +26,5 @@ def _verify_request(access_token, payload):
         raise Exception("Access token is required")
     headers = {"Authorization": f"Token {access_token}"}
     api_url = f"{JUNOPASS_API_BASE}user/verify/"
-    resp = requests.post(api_url, json=payload, headers=headers)
+    resp = requests.post(api_url, json=payload, headers=headers, timeout=10)
     return resp
