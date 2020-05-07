@@ -1,0 +1,5 @@
+venv/
+*.pyc
+junopass_py.egg-info/
+dist/
+.vscode/

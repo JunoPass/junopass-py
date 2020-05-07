@@ -1,1 +1,1 @@
-# junopass-py
+# Django JunoPass support
