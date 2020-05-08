@@ -1,6 +1,7 @@
 import nacl.encoding
 import nacl.signing
 
+
 def _generate_device_keys():
     """
     Generate device public and private key pairs
@@ -31,4 +32,4 @@ def _verify_junopass_message(public_key, signed_message):
     verify_key = nacl.signing.VerifyKey(
         public_key, encoder=nacl.encoding.HexEncoder)
     sign_message_byte = bytes.fromhex(signed_message)
-    return verify_key.verify(sign_message_byte).hex()
+    return verify_key.verify(sign_message_byte).decode("utf-8")
