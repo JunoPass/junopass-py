@@ -29,7 +29,8 @@ Submit authentication details to JunoPass. Verify signed challenge hash for auth
     valid_challenge = jp.authenticate(method, identifier, pubkey)
 
 ## Verify account using challenge and OTP token - step 2
-Verify OTP message. Send back the user OTP plus a valid challenge obtained in step 1 i.e authenticate function.
+
+Verify OTP message. Send back the user OTP plus a valid challenge obtained in step 1 i.e authenticate function. This function also checks the returned response for authenticity.
 
     resp = jp.verify(valid_challenge, device_id, prvtkey, otp=120104)
     print(resp)
