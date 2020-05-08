@@ -22,7 +22,7 @@ class TestEncryption(unittest.TestCase):
 
         method = "EMAIL"
         identifier = "felix.cheruiyot@kenyaapps.net"
-        valid_challenge, device_id = self.jp.authenticate(
+        valid_challenge, device_id, _ = self.jp.authenticate(
             method, identifier, pubkey)
         self.assertIsNotNone(valid_challenge)
         self.assertIsNotNone(device_id)
@@ -33,7 +33,7 @@ class TestEncryption(unittest.TestCase):
         # Step 1
         method = "EMAIL"
         identifier = "felix.cheruiyot@kenyaapps.net"
-        valid_challenge, device_id = self.jp.authenticate(
+        valid_challenge, device_id, _ = self.jp.authenticate(
             method, identifier, pubkey)
 
         # Step 2
