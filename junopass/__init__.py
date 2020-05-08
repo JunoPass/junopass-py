@@ -39,11 +39,11 @@ class JunoPass(object):
         Returns a valid challenge hex string and device_id for use in the verification stage.
 
         Example:
-            prvtkey, pubkey = self.jp.setup_device()
+            prvtkey, pubkey = jp.setup_device()
 
             method = "EMAIL"
             identifier = "felix.cheruiyot@kenyaapps.net"
-            valid_challenge = self.jp.authenticate(method, identifier, pubkey)
+            valid_challenge = jp.authenticate(method, identifier, pubkey)
         """
         if not self.project_id:
             raise Exception("project_id is required")
@@ -82,11 +82,11 @@ class JunoPass(object):
             # Step 1
             method = "EMAIL"
             identifier = "felix.cheruiyot@kenyaapps.net"
-            valid_challenge, device_id = self.jp.authenticate(
+            valid_challenge, device_id = jp.authenticate(
                 method, identifier, pubkey)
 
             # Step 2
-            resp = self.jp.verify(valid_challenge, device_id, prvtkey, otp=120104)
+            resp = jp.verify(valid_challenge, device_id, prvtkey, otp=120104)
             print(resp)
         """
         if not self.project_id:

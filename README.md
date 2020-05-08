@@ -15,7 +15,7 @@ Implementation of [JunoPass Authentication](https://developers.junopass.com/juno
 **Note the private_key must never be shared.**
 
     from junopass import JunoPass
-    
+
     jp = JunoPass(<Access-Token>, <JunoPass-Public-Key>)
     private_key, public_key = jp.setup_device()
 
@@ -26,12 +26,12 @@ Submit authentication details to JunoPass. Verify signed challenge hash for auth
     method = "EMAIL"
     identifier = "testuser@example.com"
 
-    valid_challenge = self.jp.authenticate(method, identifier, pubkey)
+    valid_challenge = jp.authenticate(method, identifier, pubkey)
 
 ## Verify account using challenge and OTP token - step 2
 Verify OTP message. Send back the user OTP plus a valid challenge obtained in step 1 i.e authenticate function.
 
-    resp = self.jp.verify(valid_challenge, device_id, prvtkey, otp=120104)
+    resp = jp.verify(valid_challenge, device_id, prvtkey, otp=120104)
     print(resp)
 
 ## Run Test
