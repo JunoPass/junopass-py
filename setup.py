@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="junopass-py",
-    version="1.0.4",
+    version="1.0.5",
     author="Felix Cheruiyot",
     author_email="felix@junopass.com",
     description="JunoPass support for Python.JunoPass provides a secure 2FA and Passwordless authentication.",
