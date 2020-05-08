@@ -21,7 +21,7 @@ class JunoPass(object):
 
         Example:
             from junopass import JunoPass
-            jp = JunoPass(<Access-Token>, <JunoPass-Public-Key>)
+            jp = JunoPass(<Access-Token>, <JunoPass-Public-Key>, <Project-ID>)
             private_key, public_key = jp.setup_device()
         """
         return signatures._generate_device_keys()
@@ -43,7 +43,7 @@ class JunoPass(object):
 
             method = "EMAIL"
             identifier = "felix.cheruiyot@kenyaapps.net"
-            valid_challenge = jp.authenticate(method, identifier, pubkey)
+            valid_challenge, device_id, login_request = jp.authenticate(method, identifier, pubkey)
         """
         if not self.project_id:
             raise Exception("project_id is required")
@@ -61,11 +61,12 @@ class JunoPass(object):
         resp_json = resp.json()
         device_id = resp_json.get("device_id")
         received_challenge = resp_json.get("challenge")
+        login_request = resp_json.get("login_request")
 
         # _verify_junopass_message will automatically throws an exception if not valid
         valid_challenge = signatures._verify_junopass_message(
             self.junopass_public_key, received_challenge)
-        return valid_challenge, device_id
+        return valid_challenge, device_id, login_request
 
     def verify(self, challenge, device_id, private_key_hex, otp=None):
         """
