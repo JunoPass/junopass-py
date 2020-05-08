@@ -61,6 +61,8 @@ class JunoPass(object):
         resp_json = resp.json()
         device_id = resp_json.get("device_id")
         received_challenge = resp_json.get("challenge")
+
+        # _verify_junopass_message will automatically throws an exception if not valid
         valid_challenge = signatures._verify_junopass_message(
             self.junopass_public_key, received_challenge)
         return valid_challenge, device_id
@@ -108,4 +110,17 @@ class JunoPass(object):
         if (resp.status_code != 200):
             raise Exception(f"Request error: {resp.text}")
 
-        return resp.json()
+        resp = resp.json()
+        if not resp.get("access_token_hash"):
+            raise Exception("Results error: access_token_hash not found")
+
+        if not resp.get("access_token"):
+            raise Exception("Results error: access_token not found")
+
+        # Validate results for authenticity
+        # _verify_junopass_message will automatically throws an exception if not valid
+        access_token_hash = resp.get("access_token_hash")
+        signatures._verify_junopass_message(
+            self.junopass_public_key, access_token_hash)
+
+        return resp
