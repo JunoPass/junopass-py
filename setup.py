@@ -23,6 +23,6 @@ setuptools.setup(
     python_requires='>=3.6',
     install_requires=[
         'PyNaCl==1.3.0',
-        'requests==2.23.0'
+        'requests==2.31.0'
     ]
 )
